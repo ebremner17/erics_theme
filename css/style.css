@@ -1,0 +1,248 @@
+:root {
+  --erics-theme-max-width: 1100px;
+  --erics-theme-spacing: 1rem;
+  --erics-theme-border-color: #ddd;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  padding: var(--erics-theme-spacing) calc(var(--erics-theme-spacing) * 1.5);
+  border-bottom: 1px solid var(--erics-theme-border-color);
+}
+
+/* The region wrapper around the header's blocks (branding + main navigation). */
+.site-header > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--erics-theme-spacing);
+}
+
+#block-erics-theme-site-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#block-erics-theme-site-branding a[rel="home"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+#block-erics-theme-site-branding img {
+  height: 56px;
+  width: auto;
+}
+
+#block-erics-theme-site-branding a[rel="home"]:last-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Hide the "Main navigation" heading visually; it remains for screen readers. */
+#block-erics-theme-main-menu > h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#block-erics-theme-main-menu > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#block-erics-theme-main-menu > ul a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#block-erics-theme-main-menu > ul a:hover,
+#block-erics-theme-main-menu > ul a:focus {
+  text-decoration: underline;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-toggle__bar {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.site-header.nav-open .menu-toggle__bar:nth-child(2) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-header.nav-open .menu-toggle__bar:nth-child(3) {
+  opacity: 0;
+}
+
+.site-header.nav-open .menu-toggle__bar:nth-child(4) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  #block-erics-theme-main-menu {
+    display: none;
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  #block-erics-theme-main-menu > ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #block-erics-theme-main-menu > ul li {
+    border-top: 1px solid var(--erics-theme-border-color);
+  }
+
+  #block-erics-theme-main-menu > ul a {
+    display: block;
+    padding: 0.75rem 0;
+  }
+
+  .site-header.nav-open #block-erics-theme-main-menu {
+    display: block;
+  }
+}
+
+.site-main {
+  flex: 1;
+}
+
+/* No margin/padding of its own: Drupal always renders a (visually empty)
+ * messages fallback wrapper here, even with nothing to show. Spacing lives on
+ * the actual content below (.action-links, .messages) so an empty region
+ * takes up no space. */
+.highlighted {
+  max-width: var(--erics-theme-max-width);
+  margin: 0 auto;
+  padding: 0 calc(var(--erics-theme-spacing) * 1.5);
+}
+
+/* Local actions ("Primary admin actions"), e.g. the "Add content" button. */
+.highlighted .action-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: var(--erics-theme-spacing) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.highlighted .action-links a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #0071b8;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.highlighted .action-links a:hover,
+.highlighted .action-links a:focus {
+  background: #005a94;
+}
+
+/* Status messages (error/warning/status), e.g. Drupal's messages block. */
+.highlighted .messages {
+  margin: var(--erics-theme-spacing) 0;
+  padding: var(--erics-theme-spacing);
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.highlighted .messages--status {
+  background: #f3faef;
+  border-color: #71c671;
+  color: #325e1c;
+}
+
+.highlighted .messages--warning {
+  background: #fdf8ed;
+  border-color: #e09600;
+  color: #6b4700;
+}
+
+.highlighted .messages--error {
+  background: #fdf3f2;
+  border-color: #e62600;
+  color: #8c1c0f;
+}
+
+.site-content {
+  max-width: var(--erics-theme-max-width);
+  margin: 0 auto;
+  padding: calc(var(--erics-theme-spacing) * 2) calc(var(--erics-theme-spacing) * 1.5);
+}
+
+/* When a Canvas page's title is hidden, remove the gap above the content so
+ * full-bleed elements (e.g. the hero slideshow) sit flush against the header. */
+.page-title-hidden .site-content {
+  padding-top: 0;
+}
+
+.site-footer {
+  padding: var(--erics-theme-spacing) calc(var(--erics-theme-spacing) * 1.5);
+  border-top: 1px solid var(--erics-theme-border-color);
+  text-align: center;
+  font-size: 0.875rem;
+  color: #555;
+}

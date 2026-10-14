@@ -1,0 +1,9 @@
+global:
+  css:
+    theme:
+      css/style.css: {}
+  js:
+    js/menu-toggle.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

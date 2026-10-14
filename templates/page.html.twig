@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Eric's Theme implementation to display a single page.
+ *
+ * Regions:
+ * - page.header: Primary navigation, next to the site logo.
+ * - page.highlighted: Primary admin actions and highlighted messages (e.g. status messages).
+ * - page.content: The main content of the current page.
+ * - page.footer: Footer content.
+ */
+#}
+<div class="layout-container">
+
+  <header class="site-header">
+    {{ page.header }}
+  </header>
+
+  <main role="main" class="site-main">
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+    {% if page.highlighted %}
+      <div class="highlighted">
+        {{ page.highlighted }}
+      </div>
+    {% endif %}
+
+    <div class="site-content">
+      {{ page.content }}
+    </div>
+  </main>
+
+  {% if page.footer %}
+    <footer class="site-footer" role="contentinfo">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+
+</div>

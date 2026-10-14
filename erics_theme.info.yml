@@ -1,0 +1,13 @@
+name: "Eric's Theme"
+type: theme
+description: 'A basic custom theme with a header (logo + navigation), content area, and footer.'
+core_version_requirement: ^11
+'base theme': false
+logo: logo.svg
+regions:
+  header: Header
+  highlighted: Highlighted
+  content: Content
+  footer: Footer
+libraries:
+  - erics_theme/global
