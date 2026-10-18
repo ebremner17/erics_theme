@@ -286,3 +286,173 @@ body {
   height: 1.25rem;
   fill: currentColor;
 }
+
+/* Blog listing page (/blog): results grid + filters sidebar. */
+.eb-blog-listing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.eb-blog-listing__main {
+  flex: 1 1 32rem;
+  min-width: 0;
+}
+
+.eb-blog-listing__filters {
+  flex: 0 0 18.75rem;
+  width: 18.75rem;
+}
+
+.eb-blog-listing__filters-title {
+  font-size: 1.125rem;
+  margin: 0 0 1rem;
+}
+
+.eb-blog-listing .view-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 40rem) {
+  .eb-blog-listing .view-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.eb-blog-listing .views-row {
+  margin-bottom: 2rem;
+}
+
+.eb-blog-card {
+  height: 100%;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  box-shadow: 0 1px 2px -1px rgba(37, 38, 39, 0.1);
+  padding: 1rem;
+}
+
+.eb-blog-card__image {
+  margin: -1rem -1rem 1rem;
+}
+
+.eb-blog-card__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.eb-blog-card__date {
+  display: inline-block;
+  background: #fed34c;
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.eb-blog-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.eb-blog-card__title a {
+  color: #000;
+  text-decoration: none;
+}
+
+.eb-blog-card__title a:hover,
+.eb-blog-card__title a:focus {
+  text-decoration: underline;
+}
+
+.eb-blog-card__summary {
+  margin: 0;
+  font-family: georgia, "droid serif", times, serif;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+/* Exposed filters sidebar: style both plain filters (e.g. Title) and
+ * operator-grouped filters (e.g. Date range, which Views wraps in a
+ * fieldset) the same way, since we don't have Better Exposed Filters here
+ * to do it for us. */
+.eb-blog-listing__filters .views-exposed-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eb-blog-listing__filters .js-form-item,
+.eb-blog-listing__filters fieldset {
+  border: 1px solid #dbdbdb;
+  padding: 0.75rem 1rem;
+  margin: 0;
+}
+
+.eb-blog-listing__filters fieldset legend {
+  font-weight: 600;
+  padding: 0;
+}
+
+.eb-blog-listing__filters label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.eb-blog-listing__filters .description {
+  font-size: 0.875rem;
+  color: #595959;
+  margin: 0 0 0.5rem;
+}
+
+.eb-blog-listing__filters input[type="text"],
+.eb-blog-listing__filters input[type="date"],
+.eb-blog-listing__filters select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.eb-blog-listing__filters .form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.eb-blog-listing__filters input[type="submit"] {
+  border-radius: 0;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.eb-blog-listing__filters #edit-submit-eb-blog {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.eb-blog-listing__filters #edit-reset {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.eb-blog-listing .views-empty-message,
+.eb-blog-listing .view-empty {
+  padding: 1rem 0;
+}
+
+.eb-blog-listing .pager {
+  margin-top: 2rem;
+}

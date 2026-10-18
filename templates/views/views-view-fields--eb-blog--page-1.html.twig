@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Card markup for a row on the Blog listing page (/blog).
+ *
+ * @see views-view--eb-blog--page-1.html.twig
+ */
+#}
+<article class="eb-blog-card">
+  {% if fields.field_eb_listing_image.content %}
+    <div class="eb-blog-card__image">
+      <a href="/{{ fields.path.content }}">{{ fields.field_eb_listing_image.content }}</a>
+    </div>
+  {% endif %}
+  <div class="eb-blog-card__body">
+    {% if fields.field_eb_date.content %}
+      <span class="eb-blog-card__date">{{ fields.field_eb_date.content }}</span>
+    {% endif %}
+    <h3 class="eb-blog-card__title">{{ fields.title.content }}</h3>
+    {% if fields.field_eb_summary.content %}
+      <p class="eb-blog-card__summary">{{ fields.field_eb_summary.content }}</p>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Blog listing page (/blog): results grid on the left, exposed filters in a
+ * sidebar on the right.
+ *
+ * @see https://www.drupal.org/node/2835730 for the available variables.
+ */
+#}
+{%
+  set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+
+  {% if header %}
+    <header>{{ header }}</header>
+  {% endif %}
+
+  <div class="eb-blog-listing">
+    <div class="eb-blog-listing__main">
+      {{ attachment_before }}
+
+      {% if rows -%}
+        <div class="view-content">{{ rows }}</div>
+      {% elseif empty -%}
+        {{ empty }}
+      {% endif %}
+
+      {{ pager }}
+      {{ attachment_after }}
+      {{ more }}
+    </div>
+
+    {% if exposed %}
+      <aside class="eb-blog-listing__filters">
+        <h2 class="eb-blog-listing__filters-title">Filter by:</h2>
+        {{ exposed }}
+      </aside>
+    {% endif %}
+  </div>
+
+  {% if footer %}
+    <footer>{{ footer }}</footer>
+  {% endif %}
+
+  {{ feed_icons }}
+</div>
