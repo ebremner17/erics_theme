@@ -9,7 +9,7 @@
 <article class="eb-blog-card">
   {% if fields.field_eb_listing_image.content %}
     <div class="eb-blog-card__image">
-      <a href="/{{ fields.path.content }}">{{ fields.field_eb_listing_image.content }}</a>
+      <a href="{{ path('entity.node.canonical', {'node': row._entity.id}) }}">{{ fields.field_eb_listing_image.content }}</a>
     </div>
   {% endif %}
   <div class="eb-blog-card__body">
